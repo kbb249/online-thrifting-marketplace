@@ -1,0 +1,24 @@
+/* General page style */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Make dropdowns touch each other (no space, no rounded edges) */
+select.form-select {
+  border-radius: 0;
+}
+
+/* Footer links stay white by default */
+footer .footer-link {
+  color: #fff;
+  text-decoration: none; 
+  transition: color 0.2s, text-decoration 0.2s;
+}
+
+/* Hover effect: link turns blue and underlined */
+footer .footer-link:hover {
+  color: #0d6efd; /* bootstrap blue */
+  text-decoration: underline;
+}
+
