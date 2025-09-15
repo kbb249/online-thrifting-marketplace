@@ -1,7 +1,10 @@
 /* General page style */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
+  background-color: #5c88b4;
+  margin:0px;
+  padding:0;
+
 }
 
 /* Make dropdowns touch each other (no space, no rounded edges) */
@@ -21,4 +24,40 @@ footer .footer-link:hover {
   color: #0d6efd; /* bootstrap blue */
   text-decoration: underline;
 }
-
+.header-s
+{
+  height: 60px;  
+  font-size: 16px;
+  background-color: blue;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-radius: 10px;
+  border-color: black;
+  margin-bottom: 0px;
+  line-height: 1;
+}
+.search-b
+{
+  height:60px;
+  border-radius: 0%;
+}
+.logo
+{
+  margin-top:0px;
+  padding-top: 150px;
+  border-style: solid;
+  height:300px;
+  display: block;
+  margin: 0 auto;
+}
+.carou-edit
+{
+  margin-top:100px;
+  background-color: white;
+}
+.item-edit
+{
+  border: solid;
+  height: 150px;
+  text-align: center;
+}
