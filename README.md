@@ -50,4 +50,4 @@ Representative quotes:
 
 Assessment: Nice to have
 
-<img width="468" height="465" alt="image" src="https://github.com/user-attachments/assets/4e0db295-09a5-4aa1-ba8e-3666e61aae5a" />
+
