@@ -29,3 +29,35 @@ Representative quotes:
 
 Assessment:
 Must have
+
+
+## Interview 2
+
+Who was interviewed: Valencia Garcia, fitness enthusiast
+
+Who participated in the interview:
+
+Kendahl Begay
+
+Interview date:
+09/11/2025
+
+Customer segment represented in the interview:
+Young adults who shop online for fitness and lifestyle apparel.
+
+Key insights from the interview:
+
+1. Prefers second-hand items (e.g., from Goodwill or hand-me-downs), but also shops new from exculsive brands.
+
+2. Likes platforms that build brand stories and communities.
+
+3. Finds social media convenient for second-hand shopping but worries about fraud and misrepresentation.
+
+Representative quotes:
+
+- "It's convenient to look up a specific product on social media and get a variety -- local vs. traveling somewhere."
+
+- "You can get catfished... sellers lie about the condition."
+
+Assessment:
+Don't care
