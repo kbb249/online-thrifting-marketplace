@@ -60,7 +60,7 @@ Representative quotes:
 Assessment:
 Nice to have
 
-##Interview 3
+## Interview 3
 Who was interviewed:
 Kyndul Bailey, Frequent Second Hand Buyer
 
