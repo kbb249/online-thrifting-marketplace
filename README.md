@@ -38,9 +38,6 @@ Representative quotes:
 Assessment:
 Must have
 
-Assessment:
-Don't care
-=======
 ### Interview 2
 Who was interviewed: Elisabeth Brutyan 
 
