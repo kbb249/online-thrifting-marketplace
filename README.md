@@ -1,7 +1,13 @@
 
 =======
-# Read me 
-## Interview 1
+# D.1 Inception
+## Introduction
+---
+## Initial Value Proposition
+
+
+## Interviews Summary
+### Interview 1
 
 Who was interviewed: Lexi Bengson, Diy reseller 
 
@@ -35,7 +41,7 @@ Must have
 Assessment:
 Don't care
 =======
-# Interview 2
+### Interview 2
 Who was interviewed: Elisabeth Brutyan 
 
 Who participated in the interview:
@@ -60,7 +66,7 @@ Representative quotes:
 
 Assessment: Nice to have
 
-# Interview  3
+### Interview  3
 
 Who was interviewed: Maddie Multhup
 
@@ -87,7 +93,7 @@ Representative quotes:
 Assessment: Nice to have
 
 
-## Interview 4
+### Interview 4
 
 Who was interviewed: Valencia Garcia, fitness enthusiast
 
@@ -118,7 +124,7 @@ Representative quotes:
 
 Assessment: Nice to have
 
-## Interview 5
+### Interview 5
 Who was interviewed:
 Shayla Chavez, Second-hand item buyer 
 
@@ -148,7 +154,7 @@ Representative quotes:
 Assessment:
 Nice to have
 
-## Interview 6
+### Interview 6
 Who was interviewed:
 Kyndul Bailey, frequent user of Facebook Marketplace
 
@@ -178,4 +184,110 @@ Representative quotes:
 Assessment:
 Don’t care
 
+### Interview 7
+Who was interviewed: Ruby Sandoval, a student who buys and sells used clothing. Also is familiar with online marketplaces.
 
+Who participated in the interview:
+Alexa Aguilar
+
+Interview date:
+09/15/2025
+
+Customer segment represented in the interview:
+College students buying and selling second-hand fashion items online.
+
+Key insights from the interview:
+1. They enjoy features like budget filters, free shipping, and discounts.
+
+2. Online platforms like Depop and Facebook Marketplace are preferred over social media for buying/selling.
+
+3. They said they avoid platforms that don’t have clear rules or safety measures.
+
+
+Representative quotes:
+“I don’t like selling products on social media like Instagram. I feel like it’s hard to promote yourself and you never know if you can trust the buyer or seller.”
+
+Assessment:
+Must have
+
+
+### Interview 8
+Who was interviewed: Ximena Villa, a student who primarily buys used shoes, clothes, and accessories.
+
+Who participated in the interview:
+Alexa Aguilar
+
+Interview date:
+09/16/2025
+
+Customer segment represented in the interview:
+Students looking for affordable fashion items.
+
+Key insights from the interview:
+1. Free shipping and reasonable pricing is super important.
+
+2. They've experienced privacy risks like buyers not showing up or asking to share personal information.
+
+3. They like having reviews on sellers to decide if they really want to purchase from them.
+
+Representative quotes:
+“I’ve seen issues like sellers flaking out. Also they’ve asked for my address and I don’t feel comfortable with that."
+
+“I’m also scared of meeting up somewhere and then them following me back home.”
+
+Assessment:
+Must have 
+
+### Interview 9
+Who was interviewed: Shantal Sanchez, student that buys second hand products and promotes small business services through social media.
+
+Who participated in the interview:
+Alexa Aguilar
+
+Interview date:
+09/17/2025
+
+Customer segment represented in the interview:
+Students using online platforms to buy fashion items and promote their own services.
+
+Key insights from the interview:
+1. Social media is useful for promotion but not for transactions.
+
+2. Verification of accounts is important to prevent scams.
+
+3. Selling on social media is difficult because it doesn’t have a selling format. It’s less professional compared to other marketplaces.
+
+Representative quotes:
+“I have my business on Instagram but it’s difficult because the app isn’t set up for me to sell stuff on there. I have to figure out how to set up a system that will work for me.”
+
+“The NAU snapchat stories are great for promotion, but I haven’t really tried selling directly on there. It just seems sketchy.”
+
+Assessment:
+Must have
+
+### Interview 10
+Who was interviewed: Alicia Martinez, a college student who sells second hand clothing and other services online.
+
+Who participated in the interview:
+Alexa Aguilar
+
+Interview date:
+09/17/2025
+
+Customer segment represented in the interview:
+Students selling second-hand fashion items on social media. 
+
+Key insights from the interview:
+1. Promoting small businesses on social media is possible but you just need to be careful.
+
+2. It’s important to verify accounts and make sure who you’re talking to is a secure business. 
+
+3. Social media is a great tool to promote themselves and find connections.
+
+Representative quotes:
+“As long as you’re safe and don’t include personal information, promoting your Instagram account works fine.”
+
+Assessment:
+Nice to have 
+
+## Final Value Proposition
