@@ -2,6 +2,8 @@
 =======
 # D.1 Inception
 ## Introduction
+At NAU it is very common to see the social media platform, Snapchat, being used to buy and sell various second-hand items. This raises several concerns about safety when buying from unknown vendors. Our product is a website that aims to allow college students to buy and sell items online with in-person pickups. Our website prioritizes safety and accessibility by verifying our user’s student status and establishing pickups in high-traffic areas along with limited interactions between the buyer and seller. A website specifically designed for students on campus would provide an organized interface for buying and selling on campus without the time limits and expensive products that traditional markets have, making the entire process more accessible to a majority of the student population.
+
 ---
 ## Initial Value Proposition
 
