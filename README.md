@@ -6,7 +6,7 @@ At NAU it is very common to see the social media platform, Snapchat, being used 
 
 ---
 ## Initial Value Proposition
-
+Students are using a product that is not meant for second-hand selling, we want to provide a safe, efficient and affordable way to sell their products with the current app. Through this project, we strive to create an environment that enables students to redistribute their things and make a profit from it as well.
 
 ## Interviews Summary
 ### Interview 1
