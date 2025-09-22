@@ -2,11 +2,11 @@
 =======
 # D.1 Inception
 ## Introduction
-At NAU it is very common to see the social media platform, Snapchat, being used to buy and sell various second-hand items. This raises several concerns about safety when buying from unknown vendors. Our product is a website that aims to allow college students to buy and sell items online with in-person pickups. Our website prioritizes safety and accessibility by verifying our user’s student status and establishing pickups in high-traffic areas along with limited interactions between the buyer and seller. A website specifically designed for students on campus would provide an organized interface for buying and selling on campus without the time limits and expensive products that traditional markets have, making the entire process more accessible to a majority of the student population.
+At NAU it is very common to see the social media platform, Snapchat, being used to buy and sell various second-hand items. Without a clear framework for listing or negotiating sales, these informal exchanges often result in disorganized and unreliable transactions. This raises several concerns about safety when buying from unknown vendors. Our product is a website that aims to allow college students to buy and sell items online with in-person pickups. Our website prioritizes safety and accessibility by verifying our user’s student status and establishing pickups in high-traffic areas along with limited interactions between the buyer and seller. A website specifically designed for students on campus would provide an organized interface for buying and selling on campus without the time limits and expensive products that traditional markets have, making the entire process more accessible to a majority of the student population.
 
 ---
 ## Initial Value Proposition
-Students are using a product that is not meant for second-hand selling, we want to provide a safe, efficient and affordable way to sell their products with the current app. Through this project, we strive to create an environment that enables students to redistribute their things and make a profit from it as well.
+Students are currently using social media for second-hand selling, and we want to give them a safer, more affordable, and more organized way to buy and sell items on campus. Through this project, we aim to support NAU students who already buy or sell used items and are looking for a more reliable and convenient process.
 
 ## Interviews Summary
 ### Interview 1
@@ -274,7 +274,7 @@ Interview date:
 09/17/2025
 
 Customer segment represented in the interview:
-Students selling second-hand fashion items on social media. 
+Students selling second hand fashion items on social media. 
 
 Key insights from the interview:
 1. Promoting small businesses on social media is possible but you just need to be careful.
@@ -290,3 +290,4 @@ Assessment:
 Nice to have 
 
 ## Final Value Proposition
+Our website provides a safe, organized, and affordable way for NAU students to buy and sell used items on campus, reducing the risks and headaches of informal transactions through social media. It targets students who have previously bought or sold second-hand items on campus and want a safer, more organized and secure way to carry out these transactions.
