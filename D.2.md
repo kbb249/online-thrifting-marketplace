@@ -10,6 +10,15 @@ For NAU students who want a safe, reliable, and organized way to buy and sell se
 LinkU provides a safe, organized, and affordable way for NAU students to buy and sell used items on campus, reducing the risks and headaches of informal transactions through social media. It targets students who have previously bought or sold second-hand items on campus and want a safer, more organized and secure way to carry out these transactions.
 
 ## Stakeholders
+**Primary user (Students):**  Those with a verified campus email address will be able to use this website to create listings and purchase items. They can also provide feedback for improvements.
+
+**Development team:** Zazel, Kaylee, Henry, alexa, jordin and kendahl. We all are responsible for the design and implementation of the website. We ensure that we are communicating with prospective users and addressing the problems they bring up. 
+
+**Competitors:** Depop, Facebook marketplace and offer-up. These apps/websites indirectly influence the user's expectations. 
+
+**Skeptics/ Potential partners:** University Administrators. We would have to partner with administration on locker set up and user verification. They can also help in promotion of the website as a safer alternative to public marketplaces. 
+
+**Potential sponsors:** Local Businesses, universities or startup incubators. This would provide a guideline for scaling based on funding. Depending on their role they may help with mentorship in starting a new business such as this. 
 
 ## Functional Requirements (Features)
 1. Account verification
@@ -52,6 +61,8 @@ LinkU provides a safe, organized, and affordable way for NAU students to buy and
     - The system must be able to recover from server failure without data loss using automated recovery tools
 
 ## MVP
+The MVP for this project will include the core features necessary such as University email verification, a listing system and a manual system to check the locker exchange workflow. 
+For university email verification we will start with a .edu check until we can get direct university verification (DUO). We will also implement a basic listing system where users can post items for sale with photos, descriptions and pricing. It will also be available for buyers to browse and contact sellers. And finally we should manually try locker drop offs while observing how Amazon lockers are utilized and what the customer experience looks like. Possibly interviewing customers as they finish their pick up. By doing these we will be validating if there is a demand for the product, the trustworthiness of the product because of the email verification and the convenience/usability of the locker system and listing program. 
 
 ## Use Cases
 ### *Use Case Diagram*
