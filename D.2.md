@@ -190,6 +190,49 @@ Success Scenario:
 
 
 ## User Stories
+Section 7
+(Student Buyer)
+
+As a student buyer, I want to be able to search and filter for key items in searching for.
+Priority: High, 6hours
+
+As a student buyer, I want to be able to message the seller through the app to arrange safe pick up details
+Priority: High, 6hours
+
+As a student buyer, I want to see seller verification so I know it’s safe to buy
+Priority: High, 4 hours
+
+As a student buyer, I want to be able to report suspicious behavior so I and others can feel safe. 
+Priority: High, 3 hours
+
+(Student seller)
+
+As a student seller, I want to be able to easily list items with photos and prices to quickly sell said items.
+Priority: High, 6 hours
+
+As a student seller, I want to be able to select a secure pickup location for item transfer.
+Priority: High, 5 hours
+
+As a student seller, I want to be able to receive notifications for inquiries about the product such as contact, problems or etc.
+Priority: Medium 3 hours
+
+As a student seller, I want to be able to mark or unmarked items for sale. 
+Priority: Medium 4 hours
+
+(Developer)
+
+As a developer, I want to be able to verify student status through school email or other forms of verification.
+
+Priority: High, 8 hours
+
+As a developer, I want to provide a rating system to get an accurate gauge on buyers and sellers activity
+Priority: Medium, 4 hours
+
+As a developer, I want to be able to generate reports such as sales or user activity to better performance
+Priority: Low, 3 hours
+
+As a developer, I want to be able to monitor activity between buyers and sellers to prevent inappropriate or unsafe activity.
+Priority: Med, 6 hours
 
 ## Issue Tracker
 
