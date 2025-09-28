@@ -235,6 +235,11 @@ As a developer, I want to be able to monitor activity between buyers and sellers
 Priority: Med, 6 hours
 
 ## Issue Tracker
+The user stories for our project have been registered in the [GitHub issue tracker](https://github.com/kbb249/online-thrifting-marketplace/issues)
+
+Below is a screenshot showing the issues created from our user stories: 
+<img width="1280" height="878" alt="Screenshot 2025-09-24 at 2 55 06 PM" src="https://github.com/user-attachments/assets/9d50d03a-926f-4c4c-9fa8-0ed045f24b37" />
+
 
 
 
