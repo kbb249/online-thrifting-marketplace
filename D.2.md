@@ -66,7 +66,8 @@ For university email verification we will start with a .edu check until we can g
 
 ## Use Cases
 ### *Use Case Diagram*
-<img width="591" height="537" alt="Section6 1 drawio" src="https://github.com/user-attachments/assets/cfd08e6f-b972-4ead-8973-1cc8d1c2c311" />
+<img width="598" height="536" alt="Section6 1 drawio (1)" src="https://github.com/user-attachments/assets/65037add-3a21-4361-ad89-b4a364c67321" />
+
 
 ### *Use Case Descriptions and Interface Sketch*
 Use Case: Inputting school selection
