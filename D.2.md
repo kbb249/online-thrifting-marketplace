@@ -12,7 +12,7 @@ LinkU provides a safe, organized, and affordable way for NAU students to buy and
 ## Stakeholders
 **Primary user (Students):**  Those with a verified campus email address will be able to use this website to create listings and purchase items. They can also provide feedback for improvements.
 
-**Development team:** Zazel, Kaylee, Henry, alexa, jordin and kendahl. We all are responsible for the design and implementation of the website. We ensure that we are communicating with prospective users and addressing the problems they bring up. 
+**Development team:** Zazel, Kaylee, Henry, Alexa, Jordin and Kendahl. We all are responsible for the design and implementation of the website. We ensure that we are communicating with prospective users and addressing the problems they bring up. 
 
 **Competitors:** Depop, Facebook marketplace and offer-up. These apps/websites indirectly influence the user's expectations. 
 
