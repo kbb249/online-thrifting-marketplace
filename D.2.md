@@ -1,5 +1,5 @@
 # D.2 Requirements
-## **Positioning**
+## *Positioning*
 ### *Problem Statement:*
 The problem of unsafe and disorganized second hand selling through social media platforms affects NAU students who want to buy and sell items on campus. The impact of this problem is that students face safety risks when meeting unknown sellers, experience unreliable transactions, and lack an affordable system for selling used items.
 
@@ -69,7 +69,7 @@ For university email verification we will start with a .edu check until we can g
 <img width="591" height="537" alt="Section6 1 drawio" src="https://github.com/user-attachments/assets/cfd08e6f-b972-4ead-8973-1cc8d1c2c311" />
 
 ### *Use Case Descriptions and Interface Sketch*
-Use Case: Inputting school selection
+Use Case: *Inputting school selection*
 
 Actor: Buyer and Seller
 
@@ -90,7 +90,7 @@ Success Scenario:
 <img width="401" height="165" alt="schoolSelection drawio" src="https://github.com/user-attachments/assets/5cbf446c-8229-482d-af6d-b55f355c027e" />
 
 
-Use Case: User Login
+Use Case: *User Login*
 
 Actor: Buyer and Seller
 
@@ -109,7 +109,7 @@ Success Scenario:
 <img width="401" height="104" alt="Login drawio" src="https://github.com/user-attachments/assets/5ea9a2eb-d765-46c8-ae12-1e3b4b1399dd" />
 
 
-Use Case: Post items  
+Use Case: *Post items* 
 
 Actor: Seller
 
@@ -129,7 +129,7 @@ Success Scenario:
 <img width="451" height="446" alt="Post drawio" src="https://github.com/user-attachments/assets/80141552-0a2b-4198-b319-aba7dbc199eb" />
 
 
-Use Case: Select a pick-up location
+Use Case: *Select a pick-up location*
 
 Actor: Buyer
 
@@ -149,7 +149,7 @@ Success Scenario:
 <img width="401" height="239" alt="pick-up drawio" src="https://github.com/user-attachments/assets/539e7532-3db5-443a-90aa-e600b4052ba2" />
 
 
-Use Case: Item categories
+Use Case: *Item categories*
 
 Actor: Seller
 
@@ -167,7 +167,7 @@ Success Scenario:
 <img width="451" height="446" alt="Post drawio" src="https://github.com/user-attachments/assets/f7dfaac6-8b1e-4bda-bcf8-369285542825" />
 
 
-Use Case: Rate sellers
+Use Case: *Rate sellers*
 
 Actor: Buyer
 
@@ -190,7 +190,6 @@ Success Scenario:
 
 
 ## User Stories
-Section 7
 (Student Buyer)
 
 As a student buyer, I want to be able to search and filter for key items in searching for.
