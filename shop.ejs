@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LINKU</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <div class="logo">
+            <img src="/logo.png" alt="LINKU" class="logo-img">
+            </div>
+
+            <!-- Search bar -->
+            <div class="search-bar">
+            <form action="/search" method="get">
+                <input type="text" name="q" placeholder="Search marketplace..." required />
+                <button type="submit">🔍</button>
+            </form>
+            </div>
+
+            <!-- Dropdown menu (right side) -->
+            <div class="dropdown">
+            <button class="dropbtn">☰ Menu</button>
+            <div class="dropdown-content">
+                <a href="/">Home</a>
+                <a href="/products">Products</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+            </div>
+            </div>
+        </div>
+    </header>
+  <main>
+    <div class="row">
+        <% products.forEach(product => { %>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <img src="<%= product.image %>" class="card-img-top" alt="<%= product.name %>">
+                    <div class="card-body text-center">
+                        <h5 class="card-title"><%= product.name %></h5>
+                        <p class="card-text">$<%= product.price %></p>
+                        <a href="/product/<%= product.id %>" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+    </main>
+
+  <footer>
+  </footer>
+</body>
+</html>
