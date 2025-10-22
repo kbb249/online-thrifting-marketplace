@@ -1,0 +1,28 @@
+{
+	"name": "student-verification-system",
+	"version": "1.0.0",
+	"description": "A system for verifying student status via email or document upload.",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js",
+		"dev": "nodemon server.js"
+	},
+	"keywords": [
+		"node",
+		"express",
+		"verification"
+	],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"dotenv": "^16.4.5",
+		"express": "^4.19.2",
+		"mongoose": "^8.3.1",
+		"multer": "^1.4.5-lts.1",
+		"nodemailer": "^6.9.13"
+	},
+	"devDependencies": {
+		"@types/express": "^5.0.3",
+		"@types/nodemailer": "^7.0.2"
+	}
+}

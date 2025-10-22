@@ -1,0 +1,9 @@
+# .gitignore
+# Dependencies
+/node_modules
+
+# Environment variables (MUST include this for security)
+.env 
+
+# Logs
+*.log
