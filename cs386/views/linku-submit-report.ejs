@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report suspicious activity</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Report Activity</h1>
+    <form action="/submit_report" method="POST">
+        <select name = "Category" class = "form-select header-s rounded-bottom w-25" required>
+            <option>Report Category</option>
+            <option>Scam/Fraud</option>
+            <option>Suspicious Activity</option>
+            <Option>Inappropriate Behavior</Option>
+            <option>Other..</option>
+        </select>
+        <input class ="report-form" name="title" placeholder="Title of Report" required><br>
+        <input class ="report-form" name="author" placeholder="User ID (Username)" required><br>
+        <textarea class ="report-form" name="content" placeholder="Post content..." required></textarea><br>
+        <button type="submit">Post</button>
+    </form>
+    <a href="/">← Back</a>
+</body>
