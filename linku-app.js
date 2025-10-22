@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import socketIo from "socket.io";
+import socketIo from "socket.io"; //imports socket.io chat features
 
 dotenv.config();
 const app = express();
@@ -14,6 +14,7 @@ const server = createServer(app);
 //attach socket.io to the server
 const io = socketIo(server);
 
+//lists connected users so they can message
 let connectedUsers= [];
 
 // Setup path for frontend
@@ -36,6 +37,7 @@ app.listen(PORT, () => {
 
 //socket chat functionality
 io.on('connection', (socket) => {
+  //displays message
   socket.on('chat message', (msg) => {
     //currently shows messages to all
     console.log('message received:', msg);
@@ -43,7 +45,9 @@ io.on('connection', (socket) => {
   });
 
   socket.on('disconnect', () => {
+    //logs when users disconnect from the server
     console.log('user disconnected');
+    //removes connected users from list
     connectedUsers = connectedUsers.filter(item => item.socketId != socket.id);
   });
 });
