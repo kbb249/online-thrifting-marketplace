@@ -30,6 +30,56 @@ app.get("/", (req, res) => {
   res.render("linku-index"); // do NOT include .ejs
 });
 
+// Setup path for frontend
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, "public")));
+//sets up ejs engine
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+//render files
+app.get("/", (req, res) => 
+{
+  res.render("linku-home");
+});
+app.get("/catalog", (req, res) => 
+{
+  res.render("linku-catalog");
+});
+
+app.get("/signup", (req, res) => 
+{
+  res.render("linku-signup");
+});
+
+app.get("/signin", (req, res) => 
+{
+  res.render("linku-signin");
+})
+
+app.get("/submit_report", (req, res) => 
+{
+  res.render("linku-submit-report");
+})
+
+app.get("/report_log", (req, res) =>
+{
+  const posts = getAllReports();
+  res.render("linku-reportlog", {posts});
+})
+
+function signinRedirect()
+{
+  window.location.href = '/linku-signup.ejs';
+}
+
+app.post("/submit_report", (req, res) =>
+{
+  const newReportData = req.body;
+  createReport(newReportData);
+  res.redirect('/')
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
@@ -51,3 +101,4 @@ io.on('connection', (socket) => {
     connectedUsers = connectedUsers.filter(item => item.socketId != socket.id);
   });
 });
+
