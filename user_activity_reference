@@ -1,0 +1,20 @@
+-- examples of inserting activities 
+  -- login 
+  --this will probably be used when the person clicks login after inputting information 
+INSERT INTO user_activity(user_id, activity_type, details)
+values(1, 'login', 'user logged in')
+  --
+
+
+--examples of retrieving activity 
+SELECT * FROM user_activity ORDER BY timestamp DESC
+
+  --ADD a filter for a specific user 
+SELECT * FROM user_activity WHERE user_activity = 1 ORDER BY timestamp DESC
+
+
+--Examples of extracting data 
+  -- seeing what the most common activity is on the site 
+SELECT activity_type, COUNT(*) as activity_count FROM user_activity GROUP BY activity_type
+
+-- mainly this is an ending portion of the coding process so we can add metrics 
