@@ -7,7 +7,7 @@ This repository also features our deliverables.
 To get started in working with this repository, you will first need to download the code files.
 ### Prerequisites
 
-When all the files are installed, it is needed to sort them into a folder. Once the folder is made, create folders called public and views.
+When all the files are installed, it is needed to sort them into a folder. Once the folder is made, create folders inside called public and views.
 The CSS files will mainly be stored in the public folder.
 The other folders such as the catalog pages or any other of the .ejs files will be stored in views.
 Any of the other files such as the js files can be stored in either the main folder or the connecting folder the .js is for.
