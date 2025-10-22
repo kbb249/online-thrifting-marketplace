@@ -44,49 +44,6 @@
     </div>
   </main>
   
-  <script>
-    let currentEmail = "";
-
-    async function sendCode() {
-      const email = document.getElementById("email").value;
-      currentEmail = email;
-
-      const res = await fetch("/send-code", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email })
-      });
-
-      const data = await res.json();
-      const msgBox = document.getElementById("message");
-      msgBox.innerText = data.msg;
-      msgBox.className = data.msg.includes("sent") ? "mt-2 text-success" : "mt-2 text-danger";
-
-      if (res.ok) {
-        document.getElementById("step1").style.display = "none";
-        document.getElementById("step2").style.display = "block";
-      }
-    }
-
-    async function verifyCode() {
-      const code = document.getElementById("code").value;
-
-      const res = await fetch("/verify-code", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: currentEmail, code })
-      });
-
-      const data = await res.json();
-      const msgBox = document.getElementById("message");
-      msgBox.innerText = data.msg;
-      msgBox.className = data.verified ? "mt-2 text-success" : "mt-2 text-danger";
-
-      if (data.verified) {
-        document.getElementById("step2").style.display = "none";
-      }
-    }
-  </script>
     </main>
   <!-- Footer at bottom -->
   <footer class="bg-dark text-white mt-auto py-3">
