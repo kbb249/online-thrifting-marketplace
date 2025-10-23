@@ -11,8 +11,12 @@ When all the files are installed, it is needed to sort them into a folder. Once 
 The CSS files will mainly be stored in the public folder.
 The other folders such as the catalog pages or any other of the .ejs files will be stored in views.
 Any of the other files such as the js files can be stored in either the main folder or the connecting folder the .js is for.
+Follow the way it is formatted inside the GitHub CS386 folder.
 ### Installing
+
 After implementing all of these folders into your system you can finally open up Visual Studio Code! Once this is done and the folder is opened, open up your terminal and run:
+"npm init -y"
+"npm install express ejs url"
 "node linku-app.js"
 If this worked correctly without error, it should run on your localhost and be ready for editing or work.
 
@@ -24,9 +28,6 @@ TBD
 
 TBD
 
-### And coding style tests
-
-TBD
 
 ## Deployment
 
@@ -52,7 +53,6 @@ TBD
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
-TBD
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
