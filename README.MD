@@ -1,4 +1,4 @@
-# Project Title
+# LinkU Thrifting Marketplace
 
 This is the GitHub repository for LinkU Online Thrifting Marketplace! In here you will find all the different files for the website itself. It features a home page, catalog page, user signup page, report page and etc!
 This repository also features our deliverables.
@@ -28,7 +28,6 @@ Testing is currently in progress (TBD), but will include:
 Unit Tests – Verifying backend routes and EJS rendering.
 Integration Tests – Ensuring the server communicates properly with client-side pages.
 UI/UX Tests – Checking that each webpage loads correctly and links function as expected.
-Breakdown into end-to-end tests
 
 These tests will simulate full user activity such as:
 Creating an account and logging in.
