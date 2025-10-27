@@ -1,7 +1,9 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import socketIo from "socket.io"; //imports socket.io chat features
+import dotenv from "dotenv";
+
+/*import socketIo from "socket.io"; //imports socket.io chat features*/
 
 dotenv.config();
 const app = express();
@@ -9,13 +11,18 @@ app.use(express.json());
 //run server on local
 const PORT = 3000;
 
+
+// To read form data (Listing)
+app.use(express.urlencoded({ extended: true }));
+
+/*
 //server for socket connections
 const server = createServer(app);
 //attach socket.io to the server
 const io = socketIo(server);
 
 //lists connected users so they can message
-let connectedUsers= [];
+let connectedUsers= [];*/
 
 // Setup path for frontend
 const __filename = fileURLToPath(import.meta.url);
@@ -25,18 +32,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-//render ejs 
-app.get("/", (req, res) => {
-  res.render("linku-index"); // do NOT include .ejs
-});
-
-// Setup path for frontend
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-app.use(express.static(path.join(__dirname, "public")));
-//sets up ejs engine
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+// Simple in-memory store for catalog items
+let catalogItems = [];
 
 //render files
 app.get("/", (req, res) => 
@@ -56,18 +53,23 @@ app.get("/signup", (req, res) =>
 app.get("/signin", (req, res) => 
 {
   res.render("linku-signin");
-})
+});
 
 app.get("/submit_report", (req, res) => 
 {
   res.render("linku-submit-report");
-})
+});
 
 app.get("/report_log", (req, res) =>
 {
   const posts = getAllReports();
   res.render("linku-reportlog", {posts});
-})
+});
+
+// add item form route
+app.get("/add-item", (req, res) => {
+  res.render("linku-add-item");
+});
 
 function signinRedirect()
 {
@@ -85,6 +87,7 @@ app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
 
+/*
 //socket chat functionality
 io.on('connection', (socket) => {
   //displays message
@@ -101,4 +104,4 @@ io.on('connection', (socket) => {
     connectedUsers = connectedUsers.filter(item => item.socketId != socket.id);
   });
 });
-
+*/
