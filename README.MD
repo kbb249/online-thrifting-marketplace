@@ -60,8 +60,8 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 TBD
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository]
-
+We use [SemVer](http://semver.org/) for versioning.
+Current version: **v1.0.0**
 ## Authors
 Primary Contributors
 Henry Hoang
