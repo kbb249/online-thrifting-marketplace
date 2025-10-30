@@ -1,0 +1,55 @@
+// server/src/services/email.service.js
+const nodemailer = require('nodemailer');
+
+// 1. Create a transporter object using SMTP configuration
+const transporter = nodemailer.createTransport({
+    // Service or host configuration from your .env file
+    host: process.env.EMAIL_HOST, 
+    port: 587, // Standard secure SMTP port
+    secure: false, // true for 465, false for other ports
+    auth: {
+        user: process.env.EMAIL_USER, // Your email address
+        pass: process.env.EMAIL_PASS  // Your App Password
+    }
+});
+
+/**
+ * Sends a verification code email to the student.
+ * @param {string} recipientEmail - The student's email address.
+ * @param {string} code - The 6-digit verification code.
+ */
+const sendVerificationEmail = async (recipientEmail, code) => {
+    // 2. Define the email content
+    const mailOptions = {
+        from: process.env.EMAIL_USER, // Sender address
+        to: recipientEmail,          // List of receivers
+        subject: 'Student Verification Code', // Subject line
+        html: `
+            <div style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
+                <h2 style="color: #0056b3;">Verify Your Student Status</h2>
+                <p>Hello,</p>
+                <p>You recently requested to verify your student status. Use the following code to complete the process:</p>
+                <div style="background-color: #f0f0f0; padding: 15px; text-align: center; border-radius: 5px;">
+                    <strong style="font-size: 24px; color: #333;">${code}</strong>
+                </div>
+                <p>This code is valid for 10 minutes.</p>
+                <p>If you did not request this verification, please ignore this email.</p>
+            </div>
+        `,
+    };
+
+    // 3. Send the email
+    try {
+        let info = await transporter.sendMail(mailOptions);
+        console.log(`[EMAIL LOG] Message sent to ${recipientEmail}: ${info.messageId}`);
+        return true;
+    } catch (error) {
+        console.error(`[EMAIL ERROR] Failed to send email to ${recipientEmail}:`, error);
+        // Throw the error so the controller can handle the failure
+        throw new Error('Failed to send verification email.'); 
+    }
+};
+
+module.exports = {
+    sendVerificationEmail,
+};
