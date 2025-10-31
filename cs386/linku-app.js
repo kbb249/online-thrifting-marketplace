@@ -71,11 +71,6 @@ app.get("/add-item", (req, res) => {
   res.render("linku-add-item");
 });
 
-// back button from sign-up page to return back to home
-app.get('/', (req, res) => {
-  res.render('linku-home');
-});
-
 
 
 function signinRedirect()
