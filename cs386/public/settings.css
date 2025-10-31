@@ -1,0 +1,37 @@
+/*
+ * settings.css: Custom CSS for the settings page.
+ * Focuses on layout refinement and element separation.
+ */
+
+/* Adds a light shadow and removes the default border for cleaner look */
+.card {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); 
+    border: none;
+}
+
+/* Styles for individual setting rows (label on left, control on right) */
+.setting-item {
+    /* Adds padding vertically */
+    padding-top: 15px;
+    padding-bottom: 15px;
+    /* Adds a light gray divider line for clarity */
+    border-bottom: 1px solid #e9ecef; 
+}
+
+/* Removes the divider from the very last setting item in a section */
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+/* Customizes the look of the active (selected) link in the sidebar */
+.list-group-item-action.active {
+    /* These values should inherit from your site's primary color */
+    background-color: var(--primary-color, #0d6efd) !important; 
+    border-color: var(--primary-color, #0d6efd) !important;
+}
+
+/* Ensures form controls on the right side don't get too wide */
+.setting-item select.form-select,
+.setting-item input[type="text"] {
+    max-width: 250px; 
+}
