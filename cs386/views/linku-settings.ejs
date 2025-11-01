@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Settings</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/linku-style.css">
+    <link rel="stylesheet" href="/settings.css"> 
+</head>
+<body class="d-flex flex-column min-vh-100 website-b">
+
+    <main class="flex-grow-1 container my-5">
+        <h1 class="mb-4">Account Settings</h1>
+        
+        <div class="row">
+            
+            <div class="col-md-3 mb-4">
+                <div class="list-group">
+                    <a href="#general" class="list-group-item list-group-item-action active">
+                        <i class="bi bi-gear-fill me-2"></i> General
+                    </a>
+                    <a href="#profile" class="list-group-item list-group-item-action">
+                        <i class="bi bi-person-fill me-2"></i> Profile Details
+                    </a>
+                    <a href="#security" class="list-group-item list-group-item-action">
+                        <i class="bi bi-shield-lock-fill me-2"></i> Security
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-md-9">
+                <div class="card p-4">
+                    
+                    <section id="general" class="mb-5">
+                        <h3 class="border-bottom pb-2 mb-3">General Preferences</h3>
+                        
+                        <div class="d-flex justify-content-between align-items-center setting-item">
+                            <label for="darkMode" class="form-label mb-0">Enable Dark Mode</label>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="darkMode">
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center setting-item">
+                            <label for="language" class="form-label mb-0">Language</label>
+                            <select id="language" class="form-select w-auto">
+                                <option selected>English</option>
+                                <option>Spanish</option>
+                                <option>French</option>
+                            </select>
+                        </div>
+                    </section>
+                    
+                    <section id="profile" class="mb-5">
+                        <h3 class="border-bottom pb-2 mb-3">Profile Details</h3>
+                        
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" value="CurrentUser">
+                        </div>
+                        
+                        <button class="btn btn-success mt-3">Update Profile</button>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer class="bg-dark text-white mt-auto py-3">
+
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
