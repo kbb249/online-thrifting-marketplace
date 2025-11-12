@@ -1,7 +1,7 @@
 <?php
 //database connection variables
 $servername = "localhost";
-$username = "OnlineThrifting";
+$username = "linkrlul_OnlineThrifting";
 $password ="MarketplaceDatabase1";
 $dbname = "linkrlul_userAccount";
 
@@ -16,19 +16,26 @@ if ($conn->connect_error) {
 //see if the form has been submitted 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //get the form data
-    $username = $_POST['username'];
-    $school = $_POST['school'];
-    $email = $_POST['email'];
+    $username = trim($_POST['username']);
+    $email = trim($_POST['email']);
     $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+    
+    //password validation 
+    if($password != $confirm_password){
+        die("passwords do not match");
+    }
     //hash the password 
-    $passwordhashed = password_hash($password, PASSWORD_DEFAULT);
+    $passwordhash = password_hash($password, PASSWORD_DEFAULT);
 
     //prepare and bind to the database 
-    $stmt = $conn->prepare("INSERT INTO userAccounts (username, school, email, password) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $username, $school, $email, $passwordhashed);
-    $stmt->bind_param($param_types, $username, $school, $email, $passwordhashed);
-    
+    $stmt = $conn->prepare("INSERT INTO user_account (username, email, passwordhash) VALUES (?, ?, ?)");
 
+    if (!$stmt) {
+        die("Prepare failed: " . $conn->error);
+    }
+    
+    $stmt->bind_param("sss", $username, $email, $passwordhash);
 
     //execute the statement
     if ($stmt->execute()) {
@@ -43,4 +50,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //close the connection
 $conn->close();
 ?>
+
 
