@@ -16,13 +16,13 @@
     <!-- Main page content -->
     <main class="flex-grow-1">
         <div class="top-bar">
-         <button type = "button" onclick="window.location.href='/signup'">Sign Up </button>
+         <a href="linku-signup.html" class="button">Sign Up</a>
         </div>
         <main class="flex-grow-1 d-flex justify-content-center align-items-center">
     <div class="hero-container position-relative text-center">
       <!-- Background logo/image -->
       <div class = "img-shadow">
-      <img src="/logo.png" alt="Logo" class="hero-image">
+      <img src="/assets/Logo.png" alt="Logo" class="hero-image">
       </div>
       <!-- Verification card on top -->
       <div class="verification-card position-absolute top-50 start-50 translate-middle">
@@ -31,13 +31,13 @@
         <!-- Step 1: Email input -->
         <div id="step1">
           <input type="email" id="email" placeholder="Enter your school email" class="form-control mb-2">
-          <button class="btn btn-primary w-100" onclick="window.location.href='/catalog'">Send Verification Code</button>
+          <a href="linku-catalog.html" class="btn">Send Verification Code</a>
         </div>
 
         <!-- Step 2: Code input -->
         <div id="step2" style="display:none;">
           <input type="text" id="code" placeholder="Enter verification code" class="form-control mb-2">
-          <button class="btn btn-success w-100" onclick="href">Verify Email</button>
+          <button class="button btn-success w-100" onclick="href">Verify Email</button>
         </div>
 
         <div id="message" class="mt-2"></div>
@@ -84,4 +84,3 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
