@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 $servername = "localhost";
 $username = "linkrlul_OnlineThrifting";
 $password = "MarketplaceDatabase1";
-$dbname = "linkrlul_userAccount";
+$dbname = "linkrlul_userActivity";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
