@@ -11,7 +11,10 @@
   <div class="container">
     <h2 class="mb-4">Add New Item</h2>
 
-    <form id="addItemForm" class="row g-3">
+    <form action="log-activity.php" method="POST" class="row g-3" id="addItemForm">
+        <input type="hidden" name="activity_type" value="Add Item">
+        <input type="hidden" name="details" id="activityDetails">
+      
       <div class="col-12">
         <label class="form-label">Item Name</label>
         <input class="form-control" type="text" id="name" required>
@@ -19,7 +22,7 @@
 
       <div class="col-md-6">
         <label class="form-label">Category</label>
-        <select class="form-select" id="category" required>
+        <select class="form-select" name="category" id="category" required>
           <option value="">Choose category...</option>
           <option value="Shirts">Shirts</option>
           <option value="Pants">Pants</option>
@@ -85,6 +88,13 @@
 
 
 <script src="/catalog.js"></script> 
+<script>
+document.getElementById('addItemForm').addEventListener('submit', function (e) {
+  const category = document.getElementById('category').value;
+  const detailsField = document.getElementById('activityDetails');
+  detailsField.value = category ? `User added ${category}` : 'User added an item';
+});
+</script>
 </body>
 
 </html>
