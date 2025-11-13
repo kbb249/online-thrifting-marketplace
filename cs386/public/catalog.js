@@ -65,7 +65,8 @@ function getFormItemData()
     }
 
     // return item object
-    return { name, category, color, size, material, description, price, image };
+    // This makes each listing remember who created it.
+    return { name, category, color, size, material, description, price, image, seller: CURRENT_USER };
 }
  
 // handles displaying, filtering, searching, and deleting items
@@ -107,24 +108,60 @@ function setupCatalogPage()
     // handle deleting an item
     function handleDelete(index) 
     {
-        if (confirm("Delete this item?")) 
-        {
-            catalogItems.splice(index, 1); // Remove from array
-            saveCatalog(catalogItems);     // Save updated list
-            renderCatalog();               // Re-render catalog
+        const item = catalogItems[index];
+        if (item.seller !== CURRENT_USER) {
+            alert("You can only delete your own listings.");
+            return;
+        }
+
+        if (confirm("Delete this item?")) {
+            catalogItems.splice(index, 1);
+            saveCatalog(catalogItems);
+            renderCatalog();
+        }
+    }
+    
+    // handle editing an item
+    function handleEdit(index) {
+        const item = catalogItems[index];
+        if (item.seller !== CURRENT_USER) {
+            alert("You can only edit your own listings.");
+            return;
+        }
+
+        // Prompt user for new values (simple example)
+        const newName = prompt("Enter new name:", item.name);
+        const newPrice = prompt("Enter new price:", item.price);
+
+        // Only update if values were entered
+        if (newName !== null && newPrice !== null) {
+            item.name = newName.trim() || item.name;
+            item.price = parseFloat(newPrice) || item.price;
+
+            saveCatalog(catalogItems);
+            renderCatalog();
+            alert("Item updated!");
         }
     }
 
+
     // listen for delete button clicks
-    catalogContainer.addEventListener("click", function (e) 
-    {
-        const button = e.target.closest(".btn-delete");
-        if (button) 
-        {
-            const index = Number(button.dataset.index);
+    catalogContainer.addEventListener("click", function (e) {
+        const deleteButton = e.target.closest(".btn-delete");
+        const editButton = e.target.closest(".btn-edit");
+
+        if (deleteButton) {
+            const index = Number(deleteButton.dataset.index);
             handleDelete(index);
         }
+
+        if (editButton) {
+            const index = Number(editButton.dataset.index);
+            handleEdit(index);
+        }
     });
+
+
 
     // re-render when filters change
     const filters = [filterCategory, filterColor, filterSize, filterMaterial];
@@ -251,20 +288,25 @@ function matchesFilters(item, filters)
 }
 
 // creates and returns a visual card for a catalog item
-function createCatalogCard(item, index) 
-{
+function createCatalogCard(item, index) {
     const card = document.createElement("div");
     card.className = "col-md-4 mb-4";
 
-    // handle image and price safely
     const image = item.image || "default.jpg";
     let price = "0.00";
-    if (item.price && !Number.isNaN(item.price)) 
-    {
+    if (item.price && !Number.isNaN(item.price)) {
         price = Number(item.price).toFixed(2);
     }
 
-    // build the item card HTML
+    // Only show buttons if the current user is the seller
+    let buttonsHTML = "";
+    if (item.seller === CURRENT_USER) {
+        buttonsHTML = `
+            <button class="btn btn-primary btn-sm btn-edit" data-index="${index}">Edit</button>
+            <button class="btn btn-danger btn-sm btn-delete" data-index="${index}">Delete</button>
+        `;
+    }
+
     card.innerHTML = `
         <div class="card h-100">
             <img src="${image}" class="card-img-top" alt="${item.name} image" style="height:200px;object-fit:cover">
@@ -279,13 +321,14 @@ function createCatalogCard(item, index)
                 <p class="card-text small text-muted">${item.description}</p>
                 <div class="mt-auto d-flex justify-content-between align-items-center">
                     <p class="card-text text-success fw-bold mb-0">$${price}</p>
-                    <button class="btn btn-danger btn-sm btn-delete" data-index="${index}">Delete</button>
+                    <div>${buttonsHTML}</div>
                 </div>
             </div>
         </div>
     `;
     return card;
 }
+
 
 
 // when the page finishes loading, set up the correct functionality
