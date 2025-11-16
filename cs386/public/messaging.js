@@ -20,11 +20,6 @@ function sendMessage() {
     messageInput.value = ''; //clear input
 }
 
-const sendMyMessage = (room) => {
-    socket.emit('message', {message:message});
-    sendMessage(room, loggedInUser, message)
-}
-
 messageInput.addEventListener("keydown", function(event) {
     if (event.key === "Enter") { 
         sendMessage();

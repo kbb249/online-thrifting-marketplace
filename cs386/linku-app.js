@@ -3,9 +3,6 @@ import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 
-const server    = require('http').createServer(app); //creates server for socket
-const io = require('socket.io')(server); //imports socket.io chat features
-
 dotenv.config();
 const app = express();
 app.use(express.json());
@@ -80,20 +77,4 @@ app.post("/submit_report", (req, res) =>
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
-});
-
-
-//socket chat functionality
-io.on('connection', (socket) => {
-  //displays message
-  socket.on('message', function(data) {
-        socket.broadcast.to(data.room).emit('message', data);
-  })
-    
-  //   'chat message', (msg) => {
-  //   //currently shows messages to all
-  //   console.log('message received:', msg);
-  //   io.emit('chat message', msg);
-  // });
-
 });
