@@ -1,317 +1,186 @@
-// this key is used to store and load items from localStorage
-const STORAGE_KEY = "catalogItems";
-
-// load all catalog items from localStorage
-function loadCatalog() 
-{
-    const data = localStorage.getItem(STORAGE_KEY);
-    if (data) 
-    {
-        return JSON.parse(data);
+// Load all catalog items from database
+async function loadCatalog() {
+    try {
+        const res = await fetch("/fetchItems.php");
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.error("Error loading catalog:", error);
+        return [];
     }
-    return [];
 }
 
-// save all catalog items to localStorage
-function saveCatalog(items) 
-{
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-}
-
-// handles the add item form if present on the page
-function setupAddItemForm() 
-{
+// Handles the add item form if present on the page
+function setupAddItemForm() {
     const form = document.getElementById("addItemForm");
     if (!form) return;
 
-    form.addEventListener("submit", function (e) 
-    {
-        e.preventDefault(); 
+    form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const newItem = getFormItemData();
+    const formData = new FormData();
 
-        const newItem = getFormItemData(); // get form data as an object
-        const items = loadCatalog();       // load existing catalog items
-        items.push(newItem);               // aad new item
-        saveCatalog(items);                // save to localStorage
+    for (const key in newItem) formData.append(key, newItem[key]);
 
-        alert("Item added!");              // notify user
-        window.location.href = "/catalog"; // redirect to catalog page
+        const imageInput = document.getElementById("itemImage");
+        if (imageInput && imageInput.files.length > 0) {
+            formData.append("image", imageInput.files[0]);
+        }
+
+        try {
+            await fetch("/addItem.php", {
+                method: "POST",
+                body: formData
+            });
+            alert("Item added!");
+            window.location.href = "/linku-catalog.html";
+        } catch (err) {
+            console.error(err);
+            alert("Failed to add item.");
+        }
     });
 }
 
-// collects and returns form data for a new item
-function getFormItemData() 
-{
+// Collects form data
+function getFormItemData() {
     const name = document.getElementById("name").value.trim();
     const category = document.getElementById("category").value;
     const color = document.getElementById("color").value;
     const size = document.getElementById("size").value;
     const material = document.getElementById("material").value;
     const description = document.getElementById("description").value.trim();
+    const price = parseFloat(document.getElementById("price").value) || 0;
 
-    // parse price safely
-    const priceInput = document.getElementById("price").value;
-    let price = 0;
-    if (priceInput) 
-    {
-        price = Number(parseFloat(priceInput).toFixed(2));
-    }
 
-    // handle image input or use default image
-    const imageInput = document.getElementById("itemImage");
-    let image = "default.jpg";
-    if (imageInput && imageInput.files && imageInput.files.length > 0) 
-    {
-        image = imageInput.files[0].name;
-    }
-
-    // return item object
-    // This makes each listing remember who created it.
-    return { name, category, color, size, material, description, price, image, seller: CURRENT_USER };
+    return { item_name: name, category, color, size, material, description, price };
 }
- 
-// handles displaying, filtering, searching, and deleting items
-function setupCatalogPage() 
-{
-    const catalogContainer = document.getElementById("catalogContainer");
-    if (!catalogContainer) return; // Stop if not on catalog page
 
-    // search bar and filters
+// Setup catalog page
+function setupCatalogPage() {
+    const catalogContainer = document.getElementById("catalogContainer");
+    if (!catalogContainer) return;
+
     const searchInput = document.querySelector("input.search-b") || document.getElementById("searchBar");
     const searchButton = document.querySelector("button.search-b");
-
     const filterCategory = document.getElementById("filterCategory");
     const filterColor = document.getElementById("filterColor");
     const filterSize = document.getElementById("filterSize");
     const filterMaterial = document.getElementById("filterMaterial");
 
-    // load saved catalog
-    let catalogItems = loadCatalog(); 
+    let catalogItems = [];
 
-    // render catalog items to the page
-    function renderCatalog() 
-    {
-        catalogContainer.innerHTML = ""; // Clear existing content
+    async function renderCatalog() {
+        catalogItems = await loadCatalog(); // reload from DB
+        console.log("Fetched items:", catalogItems); 
+        catalogContainer.innerHTML = "";
         const filters = getFilters(searchInput, filterCategory, filterColor, filterSize, filterMaterial);
 
-        // loop through items and display only matching ones
-        for (let i = 0; i < catalogItems.length; i++) 
-        {
-            const item = catalogItems[i];
-            if (matchesFilters(item, filters)) 
-            {
-                const card = createCatalogCard(item, i);
+        catalogItems.forEach(item => {
+            if (matchesFilters(item, filters)) {
+                const card = createCatalogCard(item);
                 catalogContainer.appendChild(card);
             }
-        }
+        });
     }
 
-    // handle deleting an item
-    function handleDelete(index) 
-    {
-        const item = catalogItems[index];
-        if (item.seller !== CURRENT_USER) {
-            alert("You can only delete your own listings.");
-            return;
+    // Delete or edit an item
+    catalogContainer.addEventListener("click", async function(e) {
+        const button = e.target.closest(".btn-delete");
+        if (button) {
+            const id = button.dataset.id;
+            if (confirm("Delete this item?")) {
+                try {
+                    await fetch("/deleteItem.php", {
+                        method: "POST",
+                        body: new URLSearchParams({ id })
+                    });
+                    renderCatalog(); // refresh
+                } catch (err) {
+                    console.error(err);
+                    alert("Failed to delete item.");
+                }
+            }
         }
 
-        if (confirm("Delete this item?")) {
-            catalogItems.splice(index, 1);
-            saveCatalog(catalogItems);
-            renderCatalog();
-        }
-    }
-    
-    // handle editing an item
-    function handleEdit(index) {
-        const item = catalogItems[index];
-        if (item.seller !== CURRENT_USER) {
-            alert("You can only edit your own listings.");
-            return;
-        }
-
-        // Prompt user for new values (simple example)
-        const newName = prompt("Enter new name:", item.name);
-        const newPrice = prompt("Enter new price:", item.price);
-
-        // Only update if values were entered
-        if (newName !== null && newPrice !== null) {
-            item.name = newName.trim() || item.name;
-            item.price = parseFloat(newPrice) || item.price;
-
-            saveCatalog(catalogItems);
-            renderCatalog();
-            alert("Item updated!");
-        }
-    }
-
-
-    // listen for delete button clicks
-    catalogContainer.addEventListener("click", function (e) {
-        const deleteButton = e.target.closest(".btn-delete");
         const editButton = e.target.closest(".btn-edit");
-
-        if (deleteButton) {
-            const index = Number(deleteButton.dataset.index);
-            handleDelete(index);
-        }
-
         if (editButton) {
-            const index = Number(editButton.dataset.index);
-            handleEdit(index);
+            const id = editButton.dataset.id;
+            window.location.href = `/edit-item.html?id=${id}`;
         }
     });
 
-
-
-    // re-render when filters change
+    // Filters
     const filters = [filterCategory, filterColor, filterSize, filterMaterial];
-    for (const filterDropdown of filters) 
-        {
-        if (filterDropdown) 
-        {
-        filterDropdown.addEventListener("change", renderCatalog);
-        }
-    }
+    for (const f of filters) if (f) f.addEventListener("change", renderCatalog);
 
-    // search button click
-    if (searchButton) 
-    {
-        searchButton.addEventListener("click", function (e) 
-        {
+    // Search
+    if (searchButton) searchButton.addEventListener("click", e => {
+        e.preventDefault();
+        renderCatalog();
+    });
+
+    if (searchInput) searchInput.addEventListener("keydown", e => {
+        if (e.key === "Enter") {
             e.preventDefault();
             renderCatalog();
-        });
-    }
+        }
+    });
 
-    // search on pressing Enter
-    if (searchInput) 
-    {
-        searchInput.addEventListener("keydown", function (e) 
-        {
-            if (e.key === "Enter") 
-            {
-                e.preventDefault();
-                renderCatalog();
-            }
-        });
-    }
-
-    // initial catalog display
     renderCatalog();
 }
 
-// collects filter values safely
-function getFilters(searchInput, cat, color, size, material) 
-{
-    const filters = {};
-
-    if (searchInput && searchInput.value) 
-        {
-        filters.query = searchInput.value.trim().toLowerCase();
-    } 
-    else 
-    {
-        filters.query = "";
-    }
-
-    if (cat && cat.value) 
-    {
-        filters.category = cat.value;
-    } 
-    else 
-    {
-        filters.category = "";
-    }
-
-    if (color && color.value) 
-    {
-        filters.color = color.value;
-    } 
-    else 
-    {
-        filters.color = "";
-    }
-
-    if (size && size.value) 
-    {
-        filters.size = size.value;
-    }
-    else 
-    {
-        filters.size = "";
-    }
-
-    if (material && material.value) 
-    {
-        filters.material = material.value;
-    }
-    else 
-    {
-        filters.material = "";
-    }
-
-    return filters;
+// Collect filter values
+function getFilters(searchInput, cat, color, size, material) {
+    return {
+        query: searchInput?.value.trim().toLowerCase() || "",
+        category: cat?.value || "",
+        color: color?.value || "",
+        size: size?.value || "",
+        material: material?.value || ""
+    };
 }
 
-// Checks if an item matches the given filters
-function matchesFilters(item, filters) 
-{
-    const name = (item.name || "").toLowerCase();
+// Check if item matches filters
+function matchesFilters(item, filters) {
+    const name = (item.item_name || "").toLowerCase();
     const desc = (item.description || "").toLowerCase();
-    const category = item.category || "";
-    const color = item.color || "";
-    const size = item.size || "";
-    const material = item.material || "";
 
-    // Search text match
-    let searchMatch = true;
-    if (filters.query) 
-    {
-        const q = filters.query;
-        searchMatch =
-            name.includes(q) ||
-            desc.includes(q) ||
-            category.toLowerCase().includes(q) ||
-            color.toLowerCase().includes(q) ||
-            size.toLowerCase().includes(q) ||
-            material.toLowerCase().includes(q);
-    }
+    const searchMatch = !filters.query ||
+        name.includes(filters.query) ||
+        desc.includes(filters.query) ||
+        (item.category || "").toLowerCase().includes(filters.query) ||
+        (item.color || "").toLowerCase().includes(filters.query) ||
+        (item.size || "").toLowerCase().includes(filters.query) ||
+        (item.material || "").toLowerCase().includes(filters.query);
 
-    // dropdown matches
-    const categoryMatch = filters.category === "" || category === filters.category;
-    const colorMatch = filters.color === "" || color === filters.color;
-    const sizeMatch = filters.size === "" || size === filters.size;
-    const materialMatch = filters.material === "" || material === filters.material;
-
-    // return true if all match
-    return searchMatch && categoryMatch && colorMatch && sizeMatch && materialMatch;
+    return searchMatch &&
+        (!filters.category || item.category === filters.category) &&
+        (!filters.color || item.color === filters.color) &&
+        (!filters.size || item.size === filters.size) &&
+        (!filters.material || item.material === filters.material);
 }
 
-// creates and returns a visual card for a catalog item
-function createCatalogCard(item, index) {
+// Create item card
+function createCatalogCard(item) {
     const card = document.createElement("div");
     card.className = "col-md-4 mb-4";
 
-    const image = item.image || "default.jpg";
-    let price = "0.00";
-    if (item.price && !Number.isNaN(item.price)) {
-        price = Number(item.price).toFixed(2);
-    }
+    const image = item.image ? `/uploads/${item.image}` : "/uploads/default.jpg"; 
+    const price = item.price ? Number(item.price).toFixed(2) : "0.00";
 
-    // Only show buttons if the current user is the seller
-    let buttonsHTML = "";
-    if (item.seller === CURRENT_USER) {
-        buttonsHTML = `
-            <button class="btn btn-primary btn-sm btn-edit" data-index="${index}">Edit</button>
-            <button class="btn btn-danger btn-sm btn-delete" data-index="${index}">Delete</button>
+    let buttons = "";
+    if (item.username === CURRENT_USER) {
+        buttons = `
+            <button class="btn btn-warning btn-sm btn-edit" data-id="${item.id}">Edit</button>
+            <button class="btn btn-danger btn-sm btn-delete" data-id="${item.id}">Delete</button>
         `;
     }
 
     card.innerHTML = `
         <div class="card h-100">
-            <img src="${image}" class="card-img-top" alt="${item.name} image" style="height:200px;object-fit:cover">
+            <img src="${image}" class="card-img-top" alt="${item.item_name} image" style="height:200px;object-fit:cover" onerror="this.src='/uploads/default.jpg'">
             <div class="card-body d-flex flex-column">
-                <h5 class="card-title">${item.name}</h5>
+                <h5 class="card-title">${item.item_name}</h5>
                 <div class="mb-2">
                     <span class="badge bg-secondary me-1">Category: ${item.category || "—"}</span>
                     <span class="badge bg-info text-dark me-1">Color: ${item.color || "—"}</span>
@@ -321,7 +190,7 @@ function createCatalogCard(item, index) {
                 <p class="card-text small text-muted">${item.description}</p>
                 <div class="mt-auto d-flex justify-content-between align-items-center">
                     <p class="card-text text-success fw-bold mb-0">$${price}</p>
-                    <div>${buttonsHTML}</div>
+                    ${buttons}
                 </div>
             </div>
         </div>
@@ -329,17 +198,8 @@ function createCatalogCard(item, index) {
     return card;
 }
 
-
-
-// when the page finishes loading, set up the correct functionality
-document.addEventListener("DOMContentLoaded", function () 
-{
-    setupAddItemForm();  // set up add item form if present
-    setupCatalogPage();  // set up catalog display if present
+// Initialize
+document.addEventListener("DOMContentLoaded", function() {
+    setupAddItemForm();
+    setupCatalogPage();
 });
-
-// for testing in Node (Jest)
-if (typeof module !== "undefined") 
-{
-  module.exports = { loadCatalog, saveCatalog, matchesFilters, getFilters };
-}
