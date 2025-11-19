@@ -12,27 +12,33 @@
   <link rel="stylesheet" href="linku-style.css">
 </head>
 <body class="d-flex flex-column min-vh-100 website-b"><!-- makes footer stick at bottom -->
-   <div class="d-flex align-items-center">
-      <select class="form-select header-s rounded-bottom w-25">
-        <option>Option 1</option>
-        <option>1</option>
-        <option>2</option>
-      </select>
-      <select class="form-select header-s rounded-bottom w-25">
-        <option>Option 2</option>
-        <option>A</option>
-        <option>B</option>
-      </select>
-      <select class="form-select header-s mt-0 rounded-bottom w-25">
-        <option>Option 3</option>
-        <option>X</option>
-        <option>Y</option>
-      </select>
-      <select class="form-select header-s mt-0 rounded-bottom w-25">
-        <option>Option 4</option>
-        <option>M</option>
-        <option>N</option>
-      </select>
+  
+<!-- ================= NAVBAR ================= -->
+<div class="top-bar">
+
+  <!-- Logo -->
+  <img src="logo.png" alt="LinkU Logo" class="logo">
+
+  <!-- Search Bar -->
+  <div class="top-search">
+    <input type="text" class="form-control search-b" placeholder="Search...">
+    <button class="btn search-btn">Search</button>
+  </div>
+
+  <!-- Profile Dropdown -->
+  <div class="dropdown">
+    <button class="dropbtn">
+      <img src="profile.jpeg" alt="Profile" class="profile-icon">
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Profile</a>
+      <a href="#">My Listings</a>
+      <a href="#">Messages</a>
+      <a href="#">Settings</a>
+    </div>
+  </div>
+
+</div>
 
     <!-- Search bar at the top -->
       <div class="input-group mb-0 w-50">
