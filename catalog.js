@@ -24,7 +24,7 @@ function setupAddItemForm() {
 
         const imageInput = document.getElementById("itemImage");
         if (imageInput && imageInput.files.length > 0) {
-            formData.append("image", imageInput.files[0]); // ✅ actual file, not just name
+            formData.append("image", imageInput.files[0]); 
         }
 
         try {
@@ -203,3 +203,4 @@ document.addEventListener("DOMContentLoaded", function() {
     setupAddItemForm();
     setupCatalogPage();
 });
+
