@@ -1,3 +1,17 @@
+<?php
+// start session so we can access session variables
+session_start();
+
+// check if the username is set
+if (isset($_SESSION['username'])) {
+    // if the user is logged in, use their username
+    $user = $_SESSION['username'];
+} else {
+    // default to guest
+    $user = 'guest';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -170,6 +184,10 @@
 
   <!-- Bootstrap JS (for dropdowns and other features) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Make PHP username available to JS -->
+  <script>
+    const CURRENT_USER = "<?php echo htmlspecialchars($user, ENT_QUOTES); ?>";
+  </script>
   <script src="/catalog.js"></script> 
 </body>
 </html>

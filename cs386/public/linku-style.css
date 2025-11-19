@@ -92,15 +92,7 @@ a:hover {
 }
 
 .btn-primary:hover {
-  background-color: #45688248;
-}
-
-.btn-success {
-  background-color: #198754;
-  border-color: #198754;
-}
-.btn-success:hover {
-  background-color: #157347;
+  background-color: #456882f2;
 }
 
 /*  Footer, keep same for all !!! */
