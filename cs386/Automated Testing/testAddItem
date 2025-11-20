@@ -1,0 +1,33 @@
+<?php
+session_start();
+require 'testListingFunctions.php';
+createTestUserSession();
+
+$_SERVER["REQUEST_METHOD"] = "POST";
+$_POST = [
+    'item_name' => 'Test Shirt',
+    'category' => 'Shirts',
+    'color' => 'Red',
+    'size' => 'M',
+    'material' => 'Cotton',
+    'description' => 'Test description',
+    'price' => '19.99'
+];
+$_FILES = []; //simulate no file upload 
+
+ob_start();
+include 'addItem.php';
+ob_end_clean();
+
+$conn = getTestConnection();
+$result = $conn->query("SELECT * FROM catelogItems WHERE username = 'testuser' AND item_name = 'Test Shirt'");
+assert($result->num_rows === 1, 'Add item failed: item not found');
+
+$item = $result->fetch_assoc();
+assert($item['color'] === 'Red', 'Color mismatch');
+assert($item['price'] == 19.99, 'Price mismatch');
+
+cleanupTestItems($conn);
+$conn->close();
+session_destroy();
+?>
