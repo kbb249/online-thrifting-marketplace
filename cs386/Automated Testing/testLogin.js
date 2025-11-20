@@ -45,7 +45,7 @@ async function runLoginTest(username, password, expected) {
     );
 
     console.log(`Test: ${expected.description}`);
-    console.log(passed ? "✅ PASSED" : "❌ FAILED");
+    console.log(passed ? "PASSED" : "FAILED");
     console.log("Response:", result);
     console.log("Expected:", expected);
     console.log("-------------------------");
