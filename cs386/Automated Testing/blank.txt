@@ -1,0 +1,3 @@
+this is where our automated testing is going to go. 
+
+if php is being used then it requires some slight changes to the functional files so that they can test using a test user session 
