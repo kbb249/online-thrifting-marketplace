@@ -51,6 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $stmt->close();
+    $_POST['activity_type'] = 'Loggin ';
+    $_POST['details'] = "user logged in";
+    include 'log-activity.php';
 }
 
 $conn->close();
