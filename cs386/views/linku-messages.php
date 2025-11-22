@@ -1,3 +1,29 @@
+<?php
+session_start();
+
+// Redirect if not logged in
+// if (!isset($_SESSION['username'])) {
+//     header("Location: linku-login.html");
+//     exit();
+// }
+
+// assume $pdo from config.php
+            $USER_ID = $_SESSION['user_id'] ?? null;
+            $conversation_id = intval($_POST['conversation_id'] ?? 0);
+            $message = trim($_POST['message'] ?? '');
+
+            if ($USER_ID && $conversation_id && $message !== '') {
+                $stmt = $pdo->prepare('INSERT INTO messages (conversation_id, sender_id, message, created_at) VALUES (:cid, :sid, :message, NOW())');
+                $stmt->execute([':cid' => $conversation_id, ':sid' => $USER_ID, ':message' => $message]);
+
+                $stmt = $pdo->prepare('UPDATE conversations SET last_updated = NOW() WHERE id = :id');
+                $stmt->execute([':id' => $conversation_id]);
+            }
+
+$conversation_id = $_GET["conversation_id"] ?? 1;  
+$_SESSION["user_id"] = 123; // test
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +37,14 @@
         <!-- <link rel="stylesheet" href="/cs386/public/messages-style.css"> -->
         <!-- <link rel="stylesheet" href="/style.css"> -->
         <title>LinkU Messages</title> 
+        <script>
+        // Dynamically load from PHP session or request
+        const CURRENT_CONVERSATION_ID = <?php echo json_encode($conversation_id); ?>;
+        const USER_ID = <?php echo json_encode($_SESSION['user_id']); ?>;
+        </script>
     </head>
-    <body class="d-flex flex-column min-vh-100 website-b" style="background-color:blanchedalmond; overflow-x: hidden">
+    <body class="d-flex flex-column min-vh-100 website-b" 
+        style="background-color:blanchedalmond; overflow-x: hidden" onload="loadConversations();">
         <div class = "ps-2 pb-2 mb-0 h1" style="background-color:darkblue; color:white">
             <div class="row">
                 <div class="col-10">Messages</div>
@@ -47,12 +79,12 @@
                 <div class="align-items-end row min-vh-100 text-wrap">
                     <!-- chat messages example-->
                     <div class="container align-self-start" id="chat">
-                    <div class="col-10">
-                        <p class="form-control mb-4" style="background-color: lightgray">Example message recieved. Really important information, to show it wraps properly.</p>
-                    </div>
-                    <div class="col-10 offset-1 align-items-end">
-                        <p class="form-control mb-4">Example message sent.</p>
-                    </div>
+                        <!-- <div class="col-10">
+                            <p class="form-control mb-4" style="background-color: lightgray">Example message recieved. Really important information, to show it wraps properly.</p>
+                        </div>
+                        <div class="col-10 offset-1 align-items-end">
+                            <p class="form-control mb-4">Example message sent.</p>
+                        </div> -->
                     </div>
                     <!-- chat text box-->
                     <div class="row">
