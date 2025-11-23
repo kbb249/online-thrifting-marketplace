@@ -3,8 +3,6 @@ import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 
-/*import socketIo from "socket.io"; //imports socket.io chat features*/
-
 dotenv.config();
 const app = express();
 app.use(express.json());
@@ -15,14 +13,6 @@ const PORT = 3000;
 // To read form data (Listing)
 app.use(express.urlencoded({ extended: true }));
 
-/*
-//server for socket connections
-const server = createServer(app);
-//attach socket.io to the server
-const io = socketIo(server);
-
-//lists connected users so they can message
-let connectedUsers= [];*/
 
 // Setup path for frontend
 const __filename = fileURLToPath(import.meta.url);
@@ -88,22 +78,3 @@ app.post("/submit_report", (req, res) =>
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
-
-/*
-//socket chat functionality
-io.on('connection', (socket) => {
-  //displays message
-  socket.on('chat message', (msg) => {
-    //currently shows messages to all
-    console.log('message received:', msg);
-    io.emit('chat message', msg);
-  });
-
-  socket.on('disconnect', () => {
-    //logs when users disconnect from the server
-    console.log('user disconnected');
-    //removes connected users from list
-    connectedUsers = connectedUsers.filter(item => item.socketId != socket.id);
-  });
-});
-*/
