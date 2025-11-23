@@ -1,0 +1,11 @@
+{
+    "name": "verification-system/api",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    },
+    "autoload": {
+        "files": [
+            "services/email.service.php"
+        ]
+    }
+}
