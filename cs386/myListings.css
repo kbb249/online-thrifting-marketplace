@@ -1,0 +1,259 @@
+body 
+{
+    font-family: 'Ubuntu', sans-serif;
+    background: white;
+    margin:0px;
+    padding:0;
+
+}
+.top-msg
+{
+    display: flex;
+    color: #1B3C53;
+    justify-content:center;
+    text-align: center;
+    padding-top: 20px;
+}
+.navbar
+{
+  flex-direction:column;
+  padding: 0.5rem 1rem;
+  background:#1B3C53;
+  box-shadow: 0 5px 5px #F9F3EF;
+}
+.navbar-logo 
+{
+  height: 50px;
+  width:auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display:block;
+  transform: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.navbar-logo:hover
+{
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.top-search
+{
+  display:flex;
+  max-width: 300px;
+  width: 100%;
+}
+.top-search .form-control
+{
+  border-radius: 1px;
+  
+  border-right: none;
+  flex:1;
+  margin:0;
+}
+.top-search .btn
+{
+  margin:0;
+  border-left: none;
+  border-radius: 1px;
+  background-color: #456882;
+  transition: transform 0.3s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.top-search .btn:hover
+{
+  background-color: #37566dca;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.add-itemBtn
+{
+  margin-left:15px;
+  white-space: nowrap;
+  background-color: #456882;
+}
+
+.profile-icon 
+{
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.2s;
+}
+
+.profile-icon:hover 
+{
+    transform: scale(1.1);
+}
+
+.nav-item.dropdown .dropdown-menu 
+{
+    border-radius: 0;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+
+#myListings 
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Each listing */
+.listing 
+{
+    background-color: #e7ded7;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+
+.listing:hover 
+{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* image */
+.listing-img 
+{
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* title */
+.listing h3 
+{
+    font-size: 1.2rem;
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+/* description */
+.listing p 
+{
+    font-size: 0.95rem;
+    color: #000000;
+    margin: 2px 0;
+    flex-grow: 1;
+}
+
+
+/* Button */
+.listing button 
+{
+    margin-top: 10px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+/* Edit button */
+.listing .edit-btn 
+{
+    background-color: white;
+    color: #1B3C53;
+}
+
+.listing .edit-btn:hover 
+{
+    background-color: #45a049;
+}
+
+/* Delete button */
+.listing .delete-btn 
+{
+    background-color: white;
+    color: #1B3C53;
+}
+
+.listing .delete-btn:hover 
+{
+    background-color: #d32f2f;
+}
+#editForm 
+{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    background-color: white;
+
+}
+
+#editForm > div 
+{
+    background-color: #fff;
+    border-color: #e7ded7;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+/* Close Button */
+#editForm .close-btn 
+{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Form Inputs */
+#editForm input,
+#editForm textarea 
+{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Buttons */
+#editForm button 
+{
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#editForm button:first-of-type 
+{
+    background-color: #28a745;
+    color: #fff;
+}
+
+#editForm button:last-of-type 
+{
+    background-color: #dc3545;
+    color: #fff;
+}
