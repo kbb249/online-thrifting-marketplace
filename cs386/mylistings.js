@@ -63,8 +63,14 @@ async function deleteItem(id)
 }
 let currentId = null;
 
+
 function openEdit(id) 
 {
+    const editMode = new bootstrap.Modal(document.getElementById('editModal'), 
+    {
+    backdrop: 'static',
+    keyboard: true  
+    }); 
     currentId = id;
     fetch(`/getItem.php?id=${id}`)
         .then(res => res.json())
@@ -73,7 +79,7 @@ function openEdit(id)
         document.getElementById("editName").value = item.item_name;
         document.getElementById("editPrice").value = item.price;
         document.getElementById("editDesc").value = item.description;
-        document.getElementById("editForm").style.display = "block";
+        editMode.show();
         });
 }
 async function saveItem() 
@@ -107,10 +113,13 @@ async function saveItem()
         
         const result = await res.json();
         
-        if (result.success) {
+        if (result.success) 
+        {
             alert("Item updated successfully!");
-            closeEdit();
-            loadListings();  
+            editMode.hide();
+            loadListings();
+            window.location.reload();
+  
         } else {
             alert("Error updating item: " + (result.error || "Unknown error."));
         }
@@ -118,10 +127,6 @@ async function saveItem()
         console.error("Fetch error:", error);
         alert("A network error occurred while saving the item.");
     }
-}
-function closeEdit() 
-{
-    document.getElementById("editForm").style.display = "none";
 }
 
 window.addEventListener("DOMContentLoaded", loadListings);

@@ -13,7 +13,6 @@ if (!isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/myListings.css">
-    <script src="mylistings.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light border-bottom sticky-top px-3 py-2">
@@ -54,16 +53,48 @@ if (!isset($_SESSION['username'])) {
 </nav>
 <h1 class = "top-msg" >My Listings</h1>
 <div id="myListings"></div>
-<div id="editForm">
-    <h2>Edit Item</h2>
+<div class="modal fade" id="editModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit Item</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
 
-    <input id="editName" placeholder="Item name"><br><br>
-    <input id="editPrice" placeholder="Price"><br><br>
-    <textarea id="editDesc" placeholder="Description"></textarea><br><br>
-    <input type="file" id="editImage"> 
-    <button onclick="saveItem()">Save</button>
-    <button onclick="closeEdit()">Cancel</button>
+      <div class="modal-body">
+        <form id="editFormFields">
+          <div class="mb-3">
+            <label for="editName" class="form-label">Item Name</label>
+            <input type="text" class="form-control" id="editName" placeholder="Item name">
+          </div>
+
+          <div class="mb-3">
+            <label for="editPrice" class="form-label">Price</label>
+            <input type="number" class="form-control" id="editPrice" placeholder="Price">
+          </div>
+
+          <div class="mb-3">
+            <label for="editDesc" class="form-label">Description</label>
+            <textarea class="form-control" id="editDesc" placeholder="Description" rows="3"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="editImage" class="form-label">Image</label>
+            <input type="file" class="form-control" id="editImage">
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="saveEditBtn" onclick="saveItem()">Save</button>
+      </div>
+
+    </div>
+  </div>
 </div>
 </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src ="./assets/js/mylistings.js"></script>
