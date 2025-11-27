@@ -82,5 +82,62 @@
 
   <!-- Bootstrap JS (for dropdowns and other features) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- =========== Verify Email Logic ============ -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+      const step1 = document.getElementById('step1'); // email input
+      const step2 = document.getElementById('step2'); // codeinput
+      const emailInput = document.getElementById('email'); // email field
+      const codeInput = document.getElementById('code'); // verification code
+      const messageDiv = document.getElementById('message'); // show messages
+      const sendBtn = step1.querySelector('a'); 
+      const verifyBtn = step2.querySelector('button'); 
+
+      // Send verification code
+      sendBtn.addEventListener('click', async (e) => {
+          e.preventDefault();
+          const email = emailInput.value.trim(); // get mail
+          if (!email) { messageDiv.textContent = "Please enter your email."; return; }
+
+          try {
+            // call php backend
+            const response = await fetch('send-code.php', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email })
+            });
+            
+            const result = await response.json();
+            messageDiv.textContent = result.msg || "Verification code sent!";
+            
+            if (response.ok) {
+              step1.style.display = 'none';
+              step2.style.display = 'block';
+              }
+          } catch (err) { messageDiv.textContent = "Error: " + err.message; }
+      });
+
+      // Verify code
+      verifyBtn.addEventListener('click', async (e) => {
+          e.preventDefault();
+          const email = emailInput.value.trim();
+          const code = codeInput.value.trim();
+          if (!code) { messageDiv.textContent = "Please enter the verification code."; return; }
+
+          try {
+            // call php backend to verify code
+            const response = await fetch('verify-code.php', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ email, code })
+              });
+              const result = await response.json();
+              messageDiv.textContent = result.msg || "Verification complete!";
+          } catch (err) { messageDiv.textContent = "Error: " + err.message; }
+      });
+  });
+</script>
+
 </body>
 </html>
