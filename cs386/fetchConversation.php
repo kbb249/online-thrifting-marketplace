@@ -1,5 +1,4 @@
 <?php
-require "../config.php";
 
 $conversation_id = intval($_GET['conversation_id']);
 

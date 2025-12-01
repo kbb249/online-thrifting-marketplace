@@ -34,8 +34,7 @@ $_SESSION["user_id"] = 123; // test
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS file (not created yet)-->
-        <!-- <link rel="stylesheet" href="/cs386/public/messages-style.css"> -->
-        <!-- <link rel="stylesheet" href="/style.css"> -->
+        <link rel="stylesheet" href="/cs386/public/messages-style.css">
         <title>LinkU Messages</title> 
         <script>
         // Dynamically load from PHP session or request
@@ -45,14 +44,15 @@ $_SESSION["user_id"] = 123; // test
     </head>
     <body class="d-flex flex-column min-vh-100 website-b" 
         style="background-color:blanchedalmond; overflow-x: hidden" onload="loadConversations();">
-        <div class = "ps-2 pb-2 mb-0 h1" style="background-color:darkblue; color:white">
+        <div class = "ps-2 pb-2 mb-0 h1 top-bar row">
             <div class="row">
-                <div class="col-10">Messages</div>
-
                 <!-- link to catalog -->
-                <div class="col-2">
-                    <a href="/cs386/views/linku-catalog.html">LinkU</a>
+                <div class="col-3">
+                    <a href="/linku-catalog.php">
+                        <img src="/assets/Logo.png" alt="LinkU Logo" class="navbar-logo" style="height:50px; width:auto; display:block;">
+                    </a>
                 </div>
+                <div class="justify-content-end col-9">Messages</div>
                 <br>
             </div>
         </div>
@@ -66,26 +66,18 @@ $_SESSION["user_id"] = 123; // test
                     <hr>
                     <li>Person3</li>
                     <hr>
-                    <li>...</li>
                 </ul>
             </div>
 
             <!-- chat messages -->
-            <div class="col-9" style="background-color:ghostwhite;">
+            <div class="col-9" id="chatbox">
                 <h2 class="text-center">Chat</h2>
                 <hr>
 
                 <!-- text box for chat-->
                 <div class="align-items-end row min-vh-100 text-wrap">
                     <!-- chat messages example-->
-                    <div class="container align-self-start" id="chat">
-                        <!-- <div class="col-10">
-                            <p class="form-control mb-4" style="background-color: lightgray">Example message recieved. Really important information, to show it wraps properly.</p>
-                        </div>
-                        <div class="col-10 offset-1 align-items-end">
-                            <p class="form-control mb-4">Example message sent.</p>
-                        </div> -->
-                    </div>
+                    <div class="container align-self-start" id="chat"></div>
                     <!-- chat text box-->
                     <div class="row">
                         <hr>
@@ -93,7 +85,7 @@ $_SESSION["user_id"] = 123; // test
                             <input type="text" class="form-control" id="messageInput" placeholder="Type a message...">
                         </div>
                         <div class="mb-2 mt-2 col-1 pb-2 me-1">
-                            <button type="button" class="btn bg-primary text-white" onclick="sendMessage();">Send</button>
+                            <button type="button" class="btn btn-primary text-white" onclick="appendMessage(messageInput.value.trim()); messageInput.value = '';">Send</button>
                         </div>
                     </div>
                 </div>

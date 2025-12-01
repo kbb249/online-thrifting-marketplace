@@ -1,0 +1,78 @@
+body 
+{
+  font-family: 'Ubuntu', sans-serif;
+  background-color: #f9fafb;
+  color: #212529;
+
+}
+
+.top-bar {
+  display: flex;
+  padding: 0.75rem 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  color: rgba(0, 0, 0, 0.6);
+
+  flex-direction:column;
+  padding: 0.5rem 1rem;
+  background:linear-gradient(to bottom,#1B3C53, #456882);
+  box-shadow: 0 5px 5px #F9F3EF;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color: #0d6efd;
+}
+
+#chatbox {
+    background: linear-gradient(180deg, #F9F3EF 50%, #D2C1B6 100%);
+}
+
+.navbar-logo 
+{
+  height: 50px;
+  width:auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display:block;
+  transform: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.navbar-logo:hover
+{
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.sent {
+    background-color: whitesmoke;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);;
+}
+
+.recieved {
+    background-color: lightgray;
+}
+
+.btn-primary {
+  background-color: #456882 !important;
+  border-color: #38556c !important;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #456882f2 !important;
+}
+
+footer {
+  background-color: #1B3C53 !important;
+}
+.footer-link {
+  color: #adb5bd;
+}
+.footer-link:hover {
+  color: #ffffff;
+}

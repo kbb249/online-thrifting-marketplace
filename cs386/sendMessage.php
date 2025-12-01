@@ -1,5 +1,4 @@
 <?php
-require "../config.php";
 
 $sender_id = $_SESSION['user_id'];
 $conversation_id = intval($_POST['conversation_id']);
