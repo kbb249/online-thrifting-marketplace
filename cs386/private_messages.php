@@ -14,7 +14,7 @@
             $servername = "localhost";
             $username = "linkrlul_OnlineThrifting";
             $password ="MarketplaceDatabase1";
-            $dbname = "linkrlul_userAccount";
+            $dbname = "linkrlul_private_messages";
 
             $conn = new mysqli($servername, $username, $password, $dbname);
             if ($conn->connect_error) {

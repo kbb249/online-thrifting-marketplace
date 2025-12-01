@@ -5,46 +5,35 @@ const chat = document.getElementById('chat');
 //sends user message
 async function sendMessage() {
     const message = messageInput.value.trim();
-    if (message != '') { //does not send if message is empty
-        //creates message box
-        const messageBox = document.createElement('div');
-        messageBox.classList.add('col-10', 'offset-1');
-        //creates message text
-        const messageText = document.createElement('p');
-        messageText.classList.add('form-control', 'mb-4');
-        messageText.innerHTML = message;
-        messageBox.appendChild(messageText);
-        //attaches message to the chat
-        chat.appendChild(messageBox);
-    }
-    messageInput.value = '';
-    // const message = messageInput.value.trim();
-    // if (!message) return;
-    // const response = await fetch("/cs386/api/messages/sendMessages.php", {
-    //     method: "POST",
-    //     body: new URLSearchParams({
-    //         message: message,
-    //         conversation_id: CURRENT_CONVERSATION_ID
-    //     })
-    // });
+    message = htmlEscape(message);
 
-    // if (response.ok) {
-    //     appendMessage(message, "sent");
-    //     messageInput.value = "";
-    // }
-    // else if (!response.ok) {
-    //     console.error("Send failed:", await response.text());
-    // }
+    if (!message) return;
+        const response = await fetch("/cs386/api/messages/sendMessages.php", {
+            method: "POST",
+            body: new URLSearchParams({
+                message: message,
+                conversation_id: CURRENT_CONVERSATION_ID
+            })
+        });
+
+        if (response.ok) {
+            appendMessage(message);
+            messageInput.value = "";
+        }
+        else if (!response.ok) {
+            console.error("Send failed:", await response.text());
+        }
 }
 
-function appendMessage(text, type) {
+function appendMessage(text) {
+    //creates message box
     const msgContainer = document.createElement("div");
     msgContainer.classList.add("col-10", "offset-1");
+    //creates message text
     const msg = document.createElement("p");
-    msg.classList.add("form-control", "mb-3");
+    msg.classList.add("form-control", 'mb-4', 'sent');
     msg.textContent = text;
-
-    if (type === "sent") msg.style.background = "lightblue";
+    //attaches message to the chat
     msgContainer.appendChild(msg);
     chat.appendChild(msgContainer);
 }
@@ -63,6 +52,8 @@ return String(str).replace(/[&<>\"']/g, function(s) {
 
 messageInput.addEventListener("keydown", function(event) {
     if (event.key === "Enter") { 
-        sendMessage();
+        const message = messageInput.value.trim();
+        messageInput.value = '';
+        appendMessage(message);
     }
 });
